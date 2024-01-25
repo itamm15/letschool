@@ -1,6 +1,6 @@
 package org.mateuszosinski.enums;
 
-public enum DegreeOfRelationship {
+public enum DegreeOfRelationships {
     MOTHER,
     FATHER,
     BROTHER,

@@ -1,9 +1,12 @@
 package org.mateuszosinski;
 
+import org.mateuszosinski.classroom.Classroom;
 import org.mateuszosinski.databaseobject.DatabaseObject;
+import org.mateuszosinski.enums.DegreeOfRelationships;
 import org.mateuszosinski.enums.Grades;
 import org.mateuszosinski.enums.Subjects;
 import org.mateuszosinski.grades.Grade;
+import org.mateuszosinski.people.LegalGuardian;
 import org.mateuszosinski.people.Student;
 import org.mateuszosinski.people.Teacher;
 import org.mateuszosinski.seeds.Seeds;
@@ -31,16 +34,14 @@ public class Main {
                     "5. Update a Student\n" +
                     "6. Delete a Student\n" +
                     "7. Create a legal guardian for student\n" +
-                    "8. Update a legal guardian for student\n" +
-                    "9. Delete a legal guardian for student\n" +
-                    "10. Create a grade\n" +
-                    "11. Update a grade\n" +
-                    "12. Delete a grade\n" +
-                    "13. Show all Teachers\n" +
-                    "14. Show all Students\n" +
-                    "15. Show all Grades\n" +
-                    "16. Exit.\n" +
-                    "17. Seed it!"
+                    "8. Create a grade\n" +
+                    "9. Update a grade\n" +
+                    "10. Delete a grade\n" +
+                    "11. Show all Teachers\n" +
+                    "12. Show all Students\n" +
+                    "13. Show all Grades\n" +
+                    "14. Exit.\n" +
+                    "15. Seed it!"
             );
 
             Scanner scanner = new Scanner(System.in);
@@ -68,10 +69,13 @@ public class Main {
                         deleteStudent();
                         break;
                     case 7:
-
+                        createLegalGuardian();
                         break;
                     case 8:
-
+                        createClassroom();
+                        break;
+                    case 9:
+                        assignStudentToClassroom();
                         break;
                     case 10:
                         createGrade();
@@ -143,6 +147,20 @@ public class Main {
 
         if (gradesCount == 0) {
             System.out.println("There are no grades!");
+        }
+    }
+
+    public static void showClassrooms() {
+        int classroomsCount = 0;
+        for(DatabaseObject databaseObject : database) {
+            if(databaseObject instanceof Classroom) {
+                System.out.println(databaseObject);
+                classroomsCount++;
+            }
+        }
+
+        if (classroomsCount == 0) {
+            System.out.println("There are no classrooms!");
         }
     }
 
@@ -276,6 +294,60 @@ public class Main {
         }
     }
 
+    public static void createLegalGuardian() {
+        try {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Provide firstname");
+            String firstname = scanner.nextLine();
+            if (!firstname.matches("^[a-zA-Z]+$")) {
+                throw new IllegalArgumentException("Firstname should only contain alphabetic characters.");
+            }
+
+            System.out.println("Provide lastname");
+            String lastname = scanner.nextLine();
+            if (!firstname.matches("^[a-zA-Z]+$")) {
+                throw new IllegalArgumentException("Firstname should only contain alphabetic characters.");
+            }
+
+            System.out.println("Provide phone number");
+            String phoneNumber = scanner.nextLine();
+            if (!phoneNumber.matches("^[0-9]{9,12}$")) {
+                throw new IllegalArgumentException("Invalid phone number format.");
+            }
+
+            System.out.println("Provide the birthdate, in format year-month-day [yyyy-mm-dd]");
+            LocalDate birthdate = LocalDate.parse(scanner.nextLine());
+
+            System.out.println("Provide degree of relationship");
+            for (DegreeOfRelationships degreeOfRelationship : DegreeOfRelationships.values()) {
+                System.out.println(degreeOfRelationship + " ");
+            }
+
+            String degreeOfRelationshipInput = scanner.nextLine();
+            DegreeOfRelationships selectedDegreeOfRelationship = DegreeOfRelationships.valueOf(degreeOfRelationshipInput.toUpperCase());
+
+            LegalGuardian legalGuardian = new LegalGuardian(firstname, lastname, phoneNumber, birthdate, selectedDegreeOfRelationship);
+            System.out.println("Created legal guardian successfully!");
+            database.add(legalGuardian);
+
+            // Assign legal guardian to student
+
+            System.out.println("Select student by DatabaseObjectId");
+            showStudents();
+
+            int pickedDatabaseStudentObject = scanner.nextInt();
+            DatabaseObject studentDatabaseObject = database.get(pickedDatabaseStudentObject - 1);
+            if(!(studentDatabaseObject instanceof Student))  throw new IllegalAccessException("It is not a student!");
+
+            Student student = (Student) studentDatabaseObject;
+            student.setLegalGuardian(legalGuardian);
+            System.out.println("Legal guardian assigned correctly to the user!");
+        } catch (Exception exception) {
+            System.out.println("Could not create legal guardian!" + exception);
+        }
+    }
+
     public static void deleteTeacher() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Pick a teacher by databaseObject");
@@ -330,6 +402,48 @@ public class Main {
             }
         } catch (Exception exception) {
             System.out.println("Could not delete grade!" + exception);
+        }
+    }
+
+    public static void createClassroom() {
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Provide classroom name");
+            String classroomName = scanner.nextLine();
+
+            Classroom classroom = new Classroom(new ArrayList<Student>(), classroomName);
+            System.out.println("Classroom created successfully!");
+            database.add(classroom);
+        } catch (Exception exception) {
+            System.out.println("Could not create classroom" + exception);
+        }
+    }
+
+    public static void assignStudentToClassroom() {
+        try {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Select student by DatabaseObjectId");
+            showStudents();
+
+            int pickedDatabaseStudentObject = scanner.nextInt();
+            DatabaseObject studentDatabaseObject = database.get(pickedDatabaseStudentObject - 1);
+            if(!(studentDatabaseObject instanceof Student))  throw new IllegalAccessException("It is not a student!");
+
+            Student student = (Student) studentDatabaseObject;
+
+            System.out.println("Select classroom by DatabaseObjectId");
+            showClassrooms();
+
+            int pickedDatabaseClassroomObject = scanner.nextInt();
+            DatabaseObject classroomDatabaseObject = database.get(pickedDatabaseClassroomObject - 1);
+            if(!(classroomDatabaseObject instanceof Classroom))  throw new IllegalAccessException("It is not a classroom!");
+
+            Classroom classroom = (Classroom) classroomDatabaseObject;
+            classroom.addStudent(student);
+            System.out.println("Assigned student to the classroom!");
+        } catch (Exception exception) {
+            System.out.println("Could not assign student to the classroom!" + exception);
         }
     }
 }

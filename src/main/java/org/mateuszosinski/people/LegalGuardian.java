@@ -1,15 +1,15 @@
 package org.mateuszosinski.people;
 
-import org.mateuszosinski.enums.DegreeOfRelationship;
+import org.mateuszosinski.enums.DegreeOfRelationships;
 
 import java.time.LocalDate;
 
 public class LegalGuardian extends Person {
     private static int numberOfLegalGuardian = 1;
     private final int legalGuardingId;
-    private DegreeOfRelationship degreeOfRelationship;
+    private DegreeOfRelationships degreeOfRelationship;
 
-    public LegalGuardian(String firstname, String lastname, String phoneNumber, LocalDate birthdate, DegreeOfRelationship degreeOfRelationship) {
+    public LegalGuardian(String firstname, String lastname, String phoneNumber, LocalDate birthdate, DegreeOfRelationships degreeOfRelationship) {
         super(firstname, lastname, phoneNumber, birthdate);
         this.degreeOfRelationship = degreeOfRelationship;
 
@@ -17,11 +17,11 @@ public class LegalGuardian extends Person {
         numberOfLegalGuardian++;
     }
 
-    public DegreeOfRelationship getDegreeOfRelationship() {
+    public DegreeOfRelationships getDegreeOfRelationship() {
         return degreeOfRelationship;
     }
 
-    public void setDegreeOfRelationship(DegreeOfRelationship degreeOfRelationship) {
+    public void setDegreeOfRelationship(DegreeOfRelationships degreeOfRelationship) {
         this.degreeOfRelationship = degreeOfRelationship;
     }
 }
