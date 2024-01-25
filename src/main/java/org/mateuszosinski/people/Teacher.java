@@ -36,6 +36,17 @@ public class Teacher extends Person {
 
     public Teacher(String firstname, String lastname, String phoneNumber, LocalDate birthdate, LocalDate enrollmentDate, float salary) {
         super(firstname, lastname, phoneNumber, birthdate);
+
+        // VALIDATION
+        if (enrollmentDate.isBefore(birthdate)) {
+            throw new IllegalArgumentException(("Enrollment date can not be before birthdate!"));
+        }
+
+        if (salary < 0) {
+            throw new IllegalArgumentException("The salary can not be lower than 0!");
+        }
+
+        // ASSIGNMENTS
         this.enrollmentDate = enrollmentDate;
         this.salary = salary;
 
@@ -79,9 +90,11 @@ public class Teacher extends Person {
     public String toString() {
         return "Teacher{" +
                 "teacherId=" + teacherId +
+                ", fullname=" + getFirstname() + " " + getLastname() +
                 ", enrollmentDate=" + enrollmentDate +
                 ", subjects=" + subjects +
                 ", salary=" + salary +
+                ", databaseObjectId = " + getId() +
                 '}';
     }
 }

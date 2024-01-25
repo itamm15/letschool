@@ -5,8 +5,14 @@ public abstract class DatabaseObject {
     private int id;
     private static int currentObjectId = 1;
 
-    public DatabaseObject(String name, int id) {
+    public DatabaseObject(String name) {
         this.name = name;
-        this.id = id;
+        this.id = currentObjectId;
+
+        currentObjectId++;
+    }
+
+    public int getId() {
+        return id;
     }
 }

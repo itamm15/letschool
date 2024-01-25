@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 public abstract class Person extends DatabaseObject {
     private static int numberOfPeople = 1;
-
     private final int personId;
     private String firstname;
     private String lastname;
@@ -14,7 +13,7 @@ public abstract class Person extends DatabaseObject {
     private LocalDate birthdate;
 
     public Person(String firstname, String lastname, String phoneNumber, LocalDate birthdate) {
-        super("PERSON", numberOfPeople);
+        super("PERSON");
         this.firstname = firstname;
         this.lastname = lastname;
         this.phoneNumber = phoneNumber;
