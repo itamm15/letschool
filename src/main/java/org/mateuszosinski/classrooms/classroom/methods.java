@@ -12,6 +12,7 @@ public class methods {
         System.out.println("Provide the DatabaseObjectID of the classroom you want to inspect.");
 
         try {
+            showClassrooms(database);
             Scanner scanner = new Scanner(System.in);
 
             int pickedDatabaseClassroomObject = scanner.nextInt();

@@ -38,7 +38,7 @@ public class Menu {
                         GradeMenu.run(database);
                         break;
                     case 4:
-                        // CLASSROOM
+                        ClassroomMenu.run(database);
                         break;
                     case 5:
                         LegalGuardianMenu.run(database);
