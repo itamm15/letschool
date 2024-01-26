@@ -23,6 +23,8 @@ public abstract class Person extends DatabaseObject {
         numberOfPeople++;
     }
 
+    public abstract String describeRole();
+
     public int getPersonId() {
         return personId;
     }
@@ -62,6 +64,4 @@ public abstract class Person extends DatabaseObject {
     public static int getNumberOfPeople() {
         return numberOfPeople;
     }
-
-
 }

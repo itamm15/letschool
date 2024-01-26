@@ -46,4 +46,9 @@ public class LegalGuardian extends Person implements PrintableInformation {
     public String getContactDetails() {
         return "Legal Guardian " + getFirstname() + " " + getLastname() + " phone number is " + getPhoneNumber();
     }
+
+    @Override
+    public String describeRole() {
+        return "Legal guardian";
+    }
 }

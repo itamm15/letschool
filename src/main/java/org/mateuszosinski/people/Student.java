@@ -74,4 +74,9 @@ public class Student extends Person implements PrintableInformation {
    public String getContactDetails() {
       return "Student " + getFirstname() + " " + getLastname() + " phone number is " + getPhoneNumber();
    }
+
+   @Override
+   public String describeRole() {
+      return "Student";
+   }
 }

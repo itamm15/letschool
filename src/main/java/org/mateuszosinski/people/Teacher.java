@@ -96,4 +96,9 @@ public class Teacher extends Person implements PrintableInformation {
     public String getContactDetails() {
         return "Teacher " + getFirstname() + " " + getLastname() + " phone number is " + getPhoneNumber();
     }
+
+    @Override
+    public String describeRole() {
+        return "Teacher";
+    }
 }
