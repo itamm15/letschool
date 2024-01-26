@@ -16,7 +16,8 @@ public class TeacherMenu {
                     "2. Delete teacher\n" +
                     "3. Show all teachers\n" +
                     "4. Show teachers contact details\n" +
-                    "5. Go back."
+                    "5. Show teachers basic info\n" +
+                    "6. Go back."
             );
 
             int chosenOption = scanner.nextInt();
@@ -33,6 +34,9 @@ public class TeacherMenu {
                     break;
                 case 4:
                     showTeachersContactDetails(database);
+                    break;
+                case 5:
+                    showTeachersBasicInfo(database);
                     break;
                 default:
                     System.out.println("Going back!");

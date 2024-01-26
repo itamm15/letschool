@@ -36,6 +36,20 @@ public class methods {
         }
     }
 
+    public static void showTeachersBasicInfo(ArrayList<DatabaseObject> database) {
+        int teachersCount = 0;
+        for(DatabaseObject databaseObject : database) {
+            if(databaseObject instanceof Teacher) {
+                System.out.println(((Teacher) databaseObject).basicPersonInformation());
+                teachersCount++;
+            }
+        }
+
+        if(teachersCount == 0) {
+            System.out.println("There are no teachers!");
+        }
+    }
+
     public static void createTeacher(ArrayList<DatabaseObject>  database) {
         try {
             Scanner scanner = new Scanner(System.in);
