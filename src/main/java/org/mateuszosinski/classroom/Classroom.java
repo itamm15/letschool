@@ -27,9 +27,21 @@ public class Classroom extends DatabaseObject {
         numberOfClassrooms++;
     }
 
-    public void addStudent(Student student) {
+    public void addStudent(Student student) throws IllegalAccessException {
         if (student != null) {
             students.add(student);
+        } else {
+            throw new IllegalAccessException("It is not a student!");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Classroom{" +
+                "classroomId=" + classroomId +
+                ", name='" + name + '\'' +
+                ", students=" + students +
+                ", students=" + getId() +
+                '}';
     }
 }

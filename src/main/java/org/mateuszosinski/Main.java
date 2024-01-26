@@ -78,6 +78,9 @@ public class Main {
                         assignStudentToClassroom();
                         break;
                     case 10:
+                        showGivenClassroom();
+                        break;
+                    case 11:
                         createGrade();
                         break;
                     case 12:
@@ -93,9 +96,12 @@ public class Main {
                         showGrades();
                         break;
                     case 16:
-                        isRunning = false;
+                        showClassrooms();
                         break;
                     case 17:
+                        isRunning = false;
+                        break;
+                    case 18:
                         Seeds.run(database);
                         break;
                     default:
@@ -161,6 +167,22 @@ public class Main {
 
         if (classroomsCount == 0) {
             System.out.println("There are no classrooms!");
+        }
+    }
+
+    public static void showGivenClassroom() {
+        System.out.println("Provide the DatabaseObjectID of the classroom you want to inspect.");
+
+        try {
+            Scanner scanner = new Scanner(System.in);
+
+            int pickedDatabaseClassroomObject = scanner.nextInt();
+            DatabaseObject classroomDatabaseObject = database.get(pickedDatabaseClassroomObject - 1);
+            if(!(classroomDatabaseObject instanceof Classroom))  throw new IllegalAccessException("It is not a classroom!");
+
+            classroomDatabaseObject.toString();
+        } catch (Exception exception) {
+            System.out.println("Could not inspect the classroom!" + exception);
         }
     }
 
