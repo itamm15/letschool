@@ -1,19 +1,15 @@
 package org.mateuszosinski.people;
 
-import org.mateuszosinski.enums.Subjects;
-
 import java.time.LocalDate;
-import java.util.List;
 
 public class Teacher extends Person {
     private static int numberOfTeachers = 1;
     private final int teacherId;
 
     private LocalDate enrollmentDate;
-    private List<Subjects> subjects;
     private float salary;
 
-    public Teacher(String firstname, String lastname, String phoneNumber, LocalDate birthdate, List<Subjects> subjects, Float salary, LocalDate enrollmentDate) {
+    public Teacher(String firstname, String lastname, String phoneNumber, LocalDate birthdate, Float salary, LocalDate enrollmentDate) {
         super(firstname, lastname, phoneNumber, birthdate);
 
         // VALIDATION
@@ -27,7 +23,6 @@ public class Teacher extends Person {
 
         // ASSIGNMENTS
         this.enrollmentDate = enrollmentDate;
-        this.subjects = subjects;
         this.salary = salary;
 
         this.teacherId = numberOfTeachers;
@@ -52,14 +47,6 @@ public class Teacher extends Person {
 
         this.teacherId = numberOfTeachers;
         numberOfTeachers++;
-    }
-
-    public List<Subjects> getSubjects() {
-        return subjects;
-    }
-
-    public void setSubjects(List<Subjects> subjects) {
-        this.subjects = subjects;
     }
 
     public Float getSalary() {
@@ -92,7 +79,6 @@ public class Teacher extends Person {
                 "teacherId=" + teacherId +
                 ", fullname=" + getFirstname() + " " + getLastname() +
                 ", enrollmentDate=" + enrollmentDate +
-                ", subjects=" + subjects +
                 ", salary=" + salary +
                 ", databaseObjectId = " + getId() +
                 '}';
