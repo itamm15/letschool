@@ -25,6 +25,20 @@ public class methods {
         }
     }
 
+    public static void showStudentsContactDetails(ArrayList<DatabaseObject> database) {
+        int studentsCount = 0;
+        for(DatabaseObject databaseObject : database) {
+            if(databaseObject instanceof Student) {
+                System.out.println(((Student) databaseObject).getContactDetails());
+                studentsCount++;
+            }
+        }
+
+        if(studentsCount == 0) {
+            System.out.println("There are no students!");
+        }
+    }
+
     public static void createStudent(ArrayList<DatabaseObject> database) {
         try {
             Scanner scanner = new Scanner(System.in);
