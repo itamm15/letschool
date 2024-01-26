@@ -17,8 +17,8 @@ public class Seeds {
     public static void run(ArrayList<DatabaseObject> database) {
         System.out.println("STARTING SEEDING PROCESS!");
         // STUDENTS
-        Student student1 = new Student("Piotrosz", "Osiński","987654321", LocalDate.of(2005, 10, 3), LocalDate.of(2010, 10, 10));
-        Student student2 = new Student("Piotr", "Sosiński","123123123", LocalDate.of(2001, 10, 3), LocalDate.of(2010, 10, 10));
+        Student student1 = new Student("Piotrosz", "Mosiński","987654321", LocalDate.of(2005, 10, 3), LocalDate.of(2010, 10, 10));
+        Student student2 = new Student("Piotr", "Sosińskimo","123123123", LocalDate.of(2001, 10, 3), LocalDate.of(2010, 10, 10));
         Student student3 = new Student("Pawel", "Brosiński","578976341", LocalDate.of(1990, 10, 3), LocalDate.of(2000, 10, 10));
 
         database.add(student1);
@@ -50,8 +50,15 @@ public class Seeds {
         database.add(grade6);
 
         // CLASSROOMS
-        Classroom classroom1 = new Classroom(new ArrayList<Student>(), "first class");
-        Classroom classroom2 = new Classroom(new ArrayList<Student>(), "second class");
+        ArrayList<Student> classroomStudents1 = new ArrayList();
+        classroomStudents1.add(student1);
+        classroomStudents1.add(student2);
+
+        ArrayList<Student> classroomStudents2 = new ArrayList();
+        classroomStudents2.add(student3);
+
+        Classroom classroom1 = new Classroom(classroomStudents1, "first class");
+        Classroom classroom2 = new Classroom(classroomStudents2, "second class");
         Classroom classroom3 = new Classroom(new ArrayList<Student>(), "third class");
 
         database.add(classroom1);
@@ -59,9 +66,9 @@ public class Seeds {
         database.add(classroom3);
 
         // LEGAL GUARDIANS
-        LegalGuardian legalGuardian1 = new LegalGuardian("Lolek", "Guardian", "123123123", LocalDate.of(2011, 10, 10), DegreeOfRelationships.BROTHER);
+        LegalGuardian legalGuardian1 = new LegalGuardian("Lolek", "Guardimoan", "123123123", LocalDate.of(2011, 10, 10), DegreeOfRelationships.BROTHER);
         LegalGuardian legalGuardian2 = new LegalGuardian("Leszek", "Guardian2", "123123123", LocalDate.of(2013, 10, 10), DegreeOfRelationships.MOTHER);
-        LegalGuardian legalGuardian3 = new LegalGuardian("Lechu", "Guardian3", "123123123", LocalDate.of(2014, 10, 10), DegreeOfRelationships.FATHER);
+        LegalGuardian legalGuardian3 = new LegalGuardian("Lechu", "Guardianmo3", "123123123", LocalDate.of(2014, 10, 10), DegreeOfRelationships.FATHER);
 
         database.add(legalGuardian1);
         database.add(legalGuardian2);

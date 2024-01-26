@@ -41,7 +41,7 @@ public class Classroom extends DatabaseObject {
                 "classroomId=" + classroomId +
                 ", name='" + name + '\'' +
                 ", students=" + students +
-                ", students=" + getId() +
+                ", DatabaseObjectID=" + getId() +
                 '}';
     }
 }

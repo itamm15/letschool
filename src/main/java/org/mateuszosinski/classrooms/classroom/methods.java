@@ -12,19 +12,23 @@ public class methods {
         System.out.println("Provide the DatabaseObjectID of the classroom you want to inspect.");
 
         try {
-            showClassrooms(database);
+            int numberOfClassrooms = showClassrooms(database);
+            if(numberOfClassrooms == 0) throw new Exception("There are no classrooms to show!");
+
             Scanner scanner = new Scanner(System.in);
 
             int pickedDatabaseClassroomObject = scanner.nextInt();
             DatabaseObject classroomDatabaseObject = database.get(pickedDatabaseClassroomObject - 1);
             if(!(classroomDatabaseObject instanceof Classroom))  throw new IllegalAccessException("It is not a classroom!");
+            Classroom classroom = (Classroom) classroomDatabaseObject;
 
-            classroomDatabaseObject.toString();
+
+            classroom.toString();
         } catch (Exception exception) {
             System.out.println("Could not inspect the classroom!" + exception);
         }
     }
-    public static void showClassrooms(ArrayList<DatabaseObject> database) {
+    public static int showClassrooms(ArrayList<DatabaseObject> database) {
         int classroomsCount = 0;
         for(DatabaseObject databaseObject : database) {
             if(databaseObject instanceof Classroom) {
@@ -36,6 +40,8 @@ public class methods {
         if (classroomsCount == 0) {
             System.out.println("There are no classrooms!");
         }
+
+        return classroomsCount;
     }
     public static void createClassroom(ArrayList<DatabaseObject> database) {
         try {

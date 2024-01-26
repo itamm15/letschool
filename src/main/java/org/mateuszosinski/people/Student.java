@@ -53,7 +53,7 @@ public class Student extends Person implements PrintableInformation {
    public String toString() {
       return "Student{" +
               "studentId=" + studentId +
-              "fullname=" + getFirstname() + " " + getLastname() +
+              ",fullname=" + getFirstname() + " " + getLastname() +
               ", enrollmentDate=" + enrollmentDate +
               ", legalGuardian=" + (legalGuardian == null ? " No legal guardian." : legalGuardian) +
               ", databaseObjectId = " + getId() +

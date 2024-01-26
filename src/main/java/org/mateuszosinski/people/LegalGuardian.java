@@ -28,6 +28,7 @@ public class LegalGuardian extends Person implements PrintableInformation {
     @Override
     public String toString() {
         return "LegalGuardian{" +
+                "fullname=" + getFirstname() + getLastname() +
                 "legalGuardingId=" + legalGuardingId +
                 ", degreeOfRelationship=" + degreeOfRelationship +
                 '}';
