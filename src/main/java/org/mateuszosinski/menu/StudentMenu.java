@@ -16,9 +16,10 @@ public class StudentMenu {
                                 "2. Delete Student\n" +
                                 "3. Show all Students\n" +
                                 "4. Show students contact details\n" +
-                                "5. Assign student to classroom\n" +
-                                "6. Assign legal guardian\n" +
-                                "7. Go back."
+                                "5. Show students basic info\n" +
+                                "6. Assign student to classroom\n" +
+                                "7. Assign legal guardian\n" +
+                                "8. Go back."
                     );
 
             int chosenOption = scanner.nextInt();
@@ -37,9 +38,12 @@ public class StudentMenu {
                     showStudentsContactDetails(database);
                     break;
                 case 5:
-                    assignStudentToClassroom(database);
+                    showStudentsBasicInfo(database);
                     break;
                 case 6:
+                    assignStudentToClassroom(database);
+                    break;
+                case 7:
                     assignLegalGuardian(database);
                     break;
                 default:
