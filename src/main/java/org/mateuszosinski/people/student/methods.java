@@ -15,7 +15,7 @@ public class methods {
         int studentsCount = 0;
         for(DatabaseObject databaseObject : database) {
             if(databaseObject instanceof Student) {
-                System.out.println(databaseObject);
+                System.out.println(databaseObject.toString());
                 studentsCount++;
             }
         }

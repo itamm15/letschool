@@ -11,11 +11,11 @@ public class TeacherMenu {
     public static void run(ArrayList<DatabaseObject> database) {
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Select an option for Student\n" +
+            System.out.println("Select an option for Teacher\n" +
                     "1. Create Teacher\n" +
                     "2. Delete teacher\n" +
                     "3. Show all teachers\n" +
-                    "4. Show teachers contact details" +
+                    "4. Show teachers contact details\n" +
                     "5. Go back."
             );
 

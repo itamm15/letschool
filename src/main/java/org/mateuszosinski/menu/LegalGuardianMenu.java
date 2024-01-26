@@ -11,7 +11,7 @@ public class LegalGuardianMenu {
     public static void run(ArrayList<DatabaseObject> database) {
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Select an option for Student\n" +
+            System.out.println("Select an option for Legal guardian\n" +
                     "1. Create a legal guardian for student\n" +
                     "2. Go back."
             );

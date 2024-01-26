@@ -15,7 +15,7 @@ public class StudentMenu {
                                 "1. Create Student\n" +
                                 "2. Delete Student\n" +
                                 "3. Show all Students\n" +
-                                "4. Show students contact details" +
+                                "4. Show students contact details\n" +
                                 "5. Assign student to classroom\n" +
                                 "6. Go back."
                     );

@@ -55,7 +55,7 @@ public class Student extends Person implements PrintableInformation {
               "studentId=" + studentId +
               "fullname=" + getFirstname() + " " + getLastname() +
               ", enrollmentDate=" + enrollmentDate +
-              ", legalGuardian=" + legalGuardian +
+              ", legalGuardian=" + (legalGuardian == null ? " No legal guardian." : legalGuardian) +
               ", databaseObjectId = " + getId() +
               '}';
    }
