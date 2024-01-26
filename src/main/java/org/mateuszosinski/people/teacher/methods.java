@@ -86,6 +86,7 @@ public class methods {
             DatabaseObject teacher = database.get(pickedDatabaseObject - 1);
             if(teacher instanceof Teacher) {
                 database.remove(teacher);
+                teacher = null;
                 System.out.println("The teacher has been deleted! Here is updated structure of teachers:\n");
                 showTeachers(database);
             } else {
