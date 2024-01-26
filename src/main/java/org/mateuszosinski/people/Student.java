@@ -2,7 +2,7 @@ package org.mateuszosinski.people;
 
 import java.time.LocalDate;
 
-public class Student extends Person {
+public class Student extends Person implements PrintableInformation {
    private static int numberOfStudents = 1;
    private final int studentId;
    private LocalDate enrollmentDate;
@@ -58,5 +58,20 @@ public class Student extends Person {
               ", legalGuardian=" + legalGuardian +
               ", databaseObjectId = " + getId() +
               '}';
+   }
+
+   @Override
+   public String basicPersonInformation() {
+      return "Student: \n " +
+             "fullname: " + getFirstname() + " " + getLastname() +
+             "\nstudentId: " + studentId +
+             "\nenrollment date: " + enrollmentDate +
+             "\nlegal guardian: " + (legalGuardian == null ? "No legal guardian assigned." : legalGuardian)
+              ;
+   }
+
+   @Override
+   public String getContactDetails() {
+      return "Student " + getFirstname() + " " + getLastname() + " phone number is " + getPhoneNumber();
    }
 }

@@ -4,7 +4,7 @@ import org.mateuszosinski.enums.DegreeOfRelationships;
 
 import java.time.LocalDate;
 
-public class LegalGuardian extends Person {
+public class LegalGuardian extends Person implements PrintableInformation {
     private static int numberOfLegalGuardian = 1;
     private final int legalGuardingId;
     private DegreeOfRelationships degreeOfRelationship;
@@ -23,5 +23,18 @@ public class LegalGuardian extends Person {
 
     public void setDegreeOfRelationship(DegreeOfRelationships degreeOfRelationship) {
         this.degreeOfRelationship = degreeOfRelationship;
+    }
+
+    @Override
+    public String basicPersonInformation() {
+        return "Legal guard: \n " +
+                "fullname: " + getFirstname() + " " + getLastname() +
+                "\nlegalGuardianId: " + legalGuardingId
+                ;
+    }
+
+    @Override
+    public String getContactDetails() {
+        return null;
     }
 }

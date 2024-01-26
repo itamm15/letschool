@@ -62,4 +62,6 @@ public abstract class Person extends DatabaseObject {
     public static int getNumberOfPeople() {
         return numberOfPeople;
     }
+
+
 }

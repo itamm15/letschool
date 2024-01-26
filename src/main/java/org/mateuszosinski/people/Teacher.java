@@ -2,7 +2,7 @@ package org.mateuszosinski.people;
 
 import java.time.LocalDate;
 
-public class Teacher extends Person {
+public class Teacher extends Person implements PrintableInformation {
     private static int numberOfTeachers = 1;
     private final int teacherId;
 
@@ -82,5 +82,18 @@ public class Teacher extends Person {
                 ", salary=" + salary +
                 ", databaseObjectId = " + getId() +
                 '}';
+    }
+
+    @Override
+    public String basicPersonInformation() {
+        return "Teacher: \n " +
+                "fullname: " + getFirstname() + " " + getLastname() +
+                "\nteacherId: " + teacherId +
+                "\nenrollment date: " + enrollmentDate;
+    }
+
+    @Override
+    public String getContactDetails() {
+        return "Teacher " + getFirstname() + " " + getLastname() + " phone number is " + getPhoneNumber();
     }
 }
