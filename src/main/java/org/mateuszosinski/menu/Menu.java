@@ -1,6 +1,8 @@
 package org.mateuszosinski.menu;
 
+import org.mateuszosinski.classrooms.Classroom;
 import org.mateuszosinski.databaseobject.DatabaseObject;
+import org.mateuszosinski.grades.Grade;
 import org.mateuszosinski.people.LegalGuardian;
 import org.mateuszosinski.people.Person;
 import org.mateuszosinski.people.Student;
@@ -23,8 +25,9 @@ public class Menu {
                             "4. Classrooms actions\n" +
                             "5. Legal Guardian actions\n" +
                             "6. Display the people by the substring on full name\n" +
-                            "7. Seed it!\n" +
-                            "8. Exit."
+                            "7. Display all objects from the database\n" +
+                            "8. Seed it!\n" +
+                            "9. Exit."
             );
 
             Scanner scanner = new Scanner(System.in);
@@ -50,10 +53,14 @@ public class Menu {
                         break;
                     case 6:
                         showPeopleBySubstrings(database);
+                        break;
                     case 7:
-                        Seeds.run(database);
+                        displayAllObjects(database);
                         break;
                     case 8:
+                        Seeds.run(database);
+                        break;
+                    case 9:
                         isRunning = false;
                         System.out.println("Bye!");
                         break;
@@ -100,6 +107,37 @@ public class Menu {
             }
         } catch (Exception exception) {
             System.out.println("Could not show people by substring!" + exception);
+        }
+    }
+
+    public static void displayAllObjects(ArrayList<DatabaseObject> database) {
+        for(DatabaseObject databaseObject : database) {
+            System.out.println("-------------------------");
+            if(databaseObject instanceof Teacher) {
+                Teacher teacher = (Teacher) databaseObject;
+                System.out.println(teacher.basicPersonInformation());
+            }
+
+            if(databaseObject instanceof Student) {
+                Student student = (Student) databaseObject;
+                System.out.println(student.basicPersonInformation());
+            }
+
+            if(databaseObject instanceof LegalGuardian) {
+                LegalGuardian legalGuardian = (LegalGuardian) databaseObject;
+                System.out.println(legalGuardian.basicPersonInformation());
+            }
+
+            if(databaseObject instanceof Classroom) {
+                Classroom classroom = (Classroom) databaseObject;
+                System.out.println(classroom.toString());
+            }
+
+            if(databaseObject instanceof Grade) {
+                Grade grade = (Grade) databaseObject;
+                System.out.println(grade.toString());
+            }
+            System.out.println("-------------------------");
         }
     }
 }
