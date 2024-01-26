@@ -17,7 +17,8 @@ public class StudentMenu {
                                 "3. Show all Students\n" +
                                 "4. Show students contact details\n" +
                                 "5. Assign student to classroom\n" +
-                                "6. Go back."
+                                "6. Assign legal guardian\n" +
+                                "7. Go back."
                     );
 
             int chosenOption = scanner.nextInt();
@@ -37,6 +38,9 @@ public class StudentMenu {
                     break;
                 case 5:
                     assignStudentToClassroom(database);
+                    break;
+                case 6:
+                    assignLegalGuardian(database);
                     break;
                 default:
                     System.out.println("Going back!");

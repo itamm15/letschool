@@ -26,6 +26,14 @@ public class LegalGuardian extends Person implements PrintableInformation {
     }
 
     @Override
+    public String toString() {
+        return "LegalGuardian{" +
+                "legalGuardingId=" + legalGuardingId +
+                ", degreeOfRelationship=" + degreeOfRelationship +
+                '}';
+    }
+
+    @Override
     public String basicPersonInformation() {
         return "Legal guard: \n " +
                 "fullname: " + getFirstname() + " " + getLastname() +
@@ -35,6 +43,6 @@ public class LegalGuardian extends Person implements PrintableInformation {
 
     @Override
     public String getContactDetails() {
-        return null;
+        return "Legal Guardian " + getFirstname() + " " + getLastname() + " phone number is " + getPhoneNumber();
     }
 }

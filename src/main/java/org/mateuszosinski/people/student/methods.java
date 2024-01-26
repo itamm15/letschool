@@ -2,6 +2,7 @@ package org.mateuszosinski.people.student;
 
 import org.mateuszosinski.classrooms.Classroom;
 import org.mateuszosinski.databaseobject.DatabaseObject;
+import org.mateuszosinski.people.LegalGuardian;
 import org.mateuszosinski.people.Student;
 
 import java.time.LocalDate;
@@ -9,9 +10,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static org.mateuszosinski.classrooms.classroom.methods.showClassrooms;
+import static org.mateuszosinski.people.legalGuardian.methods.showLegalGuardians;
 
 public class methods {
-    public static void showStudents(ArrayList<DatabaseObject> database) {
+    public static int showStudents(ArrayList<DatabaseObject> database) {
         int studentsCount = 0;
         for(DatabaseObject databaseObject : database) {
             if(databaseObject instanceof Student) {
@@ -23,6 +25,8 @@ public class methods {
         if(studentsCount == 0) {
             System.out.println("There are no students!");
         }
+
+        return studentsCount;
     }
 
     public static void showStudentsContactDetails(ArrayList<DatabaseObject> database) {
@@ -121,4 +125,39 @@ public class methods {
             System.out.println("Could not assign student to the classroom!" + exception);
         }
     }
+
+    public static void assignLegalGuardian(ArrayList<DatabaseObject> database) {
+        System.out.println("Select student by DatabaseobjectID for assigning legal guardian");
+
+        try {
+            Scanner scanner = new Scanner(System.in);
+            int numberOfStudents = showStudents(database);
+
+            if(numberOfStudents == 0) throw new Exception("There are not students! Create one and comeback later.");
+
+            int pickedDatabaseStudentObject = scanner.nextInt();
+            DatabaseObject studentDatabaseObject = database.get(pickedDatabaseStudentObject - 1);
+            if(!(studentDatabaseObject instanceof Student)) throw new IllegalAccessException("It is not a student!");
+
+            Student student = (Student) studentDatabaseObject;
+
+            System.out.println("Select legal guardian by DatabaseobjectID");
+            int numberOfLegalGuardians = showLegalGuardians(database);
+            if(numberOfLegalGuardians == 0) throw new Exception("There are not legal guardians! Create one and comeback later.");
+
+            int pickedDatabaseLegalGuardianObject = scanner.nextInt();
+            DatabaseObject legalGuardianDatabaseObject = database.get(pickedDatabaseLegalGuardianObject - 1);
+            if (!(legalGuardianDatabaseObject instanceof LegalGuardian)) throw new IllegalAccessException("It is not a legal guardian!");
+
+            LegalGuardian legalGuardian = (LegalGuardian) legalGuardianDatabaseObject;
+
+            student.setLegalGuardian(legalGuardian);
+            System.out.println("Legal guardian has been settled correctly!");
+
+            student.basicPersonInformation();
+        } catch (Exception exception) {
+            System.out.println("Could not assign legal guardian to the Student" + exception);
+        }
+    }
+
 }

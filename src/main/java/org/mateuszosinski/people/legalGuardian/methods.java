@@ -12,6 +12,23 @@ import java.util.Scanner;
 import static org.mateuszosinski.people.student.methods.showStudents;
 
 public class methods {
+
+    public static int showLegalGuardians(ArrayList<DatabaseObject> database) {
+        int legalGuardiansCount = 0;
+        for(DatabaseObject databaseObject : database) {
+            if(databaseObject instanceof LegalGuardian) {
+                System.out.println(databaseObject.toString());
+                legalGuardiansCount++;
+            }
+        }
+
+        if(legalGuardiansCount == 0) {
+            System.out.println("There are no legalGuardians!");
+        }
+
+        return legalGuardiansCount;
+    }
+
     public static void createLegalGuardian(ArrayList<DatabaseObject> database) {
         try {
             Scanner scanner = new Scanner(System.in);
@@ -51,7 +68,9 @@ public class methods {
 
             // Assign legal guardian to student
             System.out.println("Select student by DatabaseObjectId");
-            showStudents(database);
+            int numberOfStudents = showStudents(database);
+
+            if (numberOfStudents == 0) throw new Exception("There are no students! Create student and then assign legal guardian in student menu!");
 
             int pickedDatabaseStudentObject = scanner.nextInt();
             DatabaseObject studentDatabaseObject = database.get(pickedDatabaseStudentObject - 1);
