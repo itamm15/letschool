@@ -1,4 +1,4 @@
-package org.mateuszosinski.classroom;
+package org.mateuszosinski.classrooms;
 
 import org.mateuszosinski.databaseobject.DatabaseObject;
 import org.mateuszosinski.people.Student;

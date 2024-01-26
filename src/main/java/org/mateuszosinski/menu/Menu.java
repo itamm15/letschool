@@ -1,11 +1,19 @@
 package org.mateuszosinski.menu;
 
+import org.mateuszosinski.databaseobject.DatabaseObject;
 import org.mateuszosinski.seeds.Seeds;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class menu {
-    public static void menu() {
+import static org.mateuszosinski.classrooms.classroom.methods.*;
+import static org.mateuszosinski.grades.grade.methods.*;
+import static org.mateuszosinski.people.legalGuardian.methods.createLegalGuardian;
+import static org.mateuszosinski.people.student.methods.*;
+import static org.mateuszosinski.people.teacher.methods.*;
+
+public class Menu {
+    public static void showMenu(ArrayList<DatabaseObject> database) {
         boolean isRunning = true;
 
         while(isRunning) {
@@ -35,52 +43,52 @@ public class menu {
 
                 switch (option) {
                     case 1:
-                        createTeacher();
+                        createTeacher(database);
                         break;
                     case 2:
 
                         break;
                     case 3:
-                        deleteTeacher();
+                        deleteTeacher(database);
                         break;
                     case 4:
-                        createStudent();
+                        createStudent(database);
                         break;
                     case 5:
 
                         break;
                     case 6:
-                        deleteStudent();
+                        deleteStudent(database);
                         break;
                     case 7:
-                        createLegalGuardian();
+                        createLegalGuardian(database);
                         break;
                     case 8:
-                        createClassroom();
+                        createClassroom(database);
                         break;
                     case 9:
-                        assignStudentToClassroom();
+                        assignStudentToClassroom(database);
                         break;
                     case 10:
-                        showGivenClassroom();
+                        showGivenClassroom(database);
                         break;
                     case 11:
-                        createGrade();
+                        createGrade(database);
                         break;
                     case 12:
-                        deleteGrade();
+                        deleteGrade(database);
                         break;
                     case 13:
-                        showTeachers();
+                        showTeachers(database);
                         break;
                     case 14:
-                        showStudents();
+                        showStudents(database);
                         break;
                     case 15:
-                        showGrades();
+                        showGrades(database);
                         break;
                     case 16:
-                        showClassrooms();
+                        showClassrooms(database);
                         break;
                     case 17:
                         isRunning = false;
