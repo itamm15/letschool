@@ -5,17 +5,16 @@ import org.mateuszosinski.databaseobject.DatabaseObject;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static org.mateuszosinski.people.teacher.methods.*;
+import static org.mateuszosinski.grades.grade.methods.*;
 
-public class TeacherMenu {
+public class GradeMenu {
     public static void run(ArrayList<DatabaseObject> database) {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Select an option for Student\n" +
-                    "1. Create Teacher\n" +
-                    "2. Delete teacher\n" +
-                    "3. Show all teachers\n" +
-                    "4. Show teachers contact details" +
+                    "1. Create a grade\n" +
+                    "2. Delete a grade\n" +
+                    "3. Show all grades\n" +
                     "5. Go back."
             );
 
@@ -23,16 +22,13 @@ public class TeacherMenu {
 
             switch (chosenOption) {
                 case 1:
-                    createTeacher(database);
+                    createGrade(database);
                     break;
                 case 2:
-                    deleteTeacher(database);
+                    deleteGrade(database);
                     break;
                 case 3:
-                    showTeachers(database);
-                    break;
-                case 4:
-                    showTeachersContactDetails(database);
+                    showGrades(database);
                     break;
                 default:
                     System.out.println("Going back!");
@@ -40,7 +36,7 @@ public class TeacherMenu {
             }
 
         } catch (Exception exception) {
-            System.out.println("Something went wrong for the Teacher menu!" + exception);
+            System.out.println("Something went wrong for the Grade menu!" + exception);
         }
     }
 }
