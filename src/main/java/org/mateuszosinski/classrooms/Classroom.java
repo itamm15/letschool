@@ -6,7 +6,7 @@ import org.mateuszosinski.people.Student;
 import java.util.ArrayList;
 
 public class Classroom extends DatabaseObject {
-    private static int numberOfClassrooms;
+    private static int numberOfClassrooms = 1;
     private final int classroomId;
     private String name;
     private ArrayList<Student> students;
