@@ -50,7 +50,6 @@ public class methods {
             database.add(legalGuardian);
 
             // Assign legal guardian to student
-
             System.out.println("Select student by DatabaseObjectId");
             showStudents(database);
 

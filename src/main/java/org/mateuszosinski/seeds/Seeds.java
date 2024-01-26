@@ -1,9 +1,12 @@
 package org.mateuszosinski.seeds;
 
+import org.mateuszosinski.classrooms.Classroom;
 import org.mateuszosinski.databaseobject.DatabaseObject;
+import org.mateuszosinski.enums.DegreeOfRelationships;
 import org.mateuszosinski.enums.Grades;
 import org.mateuszosinski.enums.Subjects;
 import org.mateuszosinski.grades.Grade;
+import org.mateuszosinski.people.LegalGuardian;
 import org.mateuszosinski.people.Student;
 import org.mateuszosinski.people.Teacher;
 
@@ -45,6 +48,24 @@ public class Seeds {
         database.add(grade4);
         database.add(grade5);
         database.add(grade6);
+
+        // CLASSROOMS
+        Classroom classroom1 = new Classroom(new ArrayList<Student>(), "first class");
+        Classroom classroom2 = new Classroom(new ArrayList<Student>(), "second class");
+        Classroom classroom3 = new Classroom(new ArrayList<Student>(), "third class");
+
+        database.add(classroom1);
+        database.add(classroom2);
+        database.add(classroom3);
+
+        // LEGAL GUARDIANS
+        LegalGuardian legalGuardian1 = new LegalGuardian("Lolek", "Guardian", "123123123", LocalDate.of(2011, 10, 10), DegreeOfRelationships.BROTHER);
+        LegalGuardian legalGuardian2 = new LegalGuardian("Leszek", "Guardian2", "123123123", LocalDate.of(2013, 10, 10), DegreeOfRelationships.MOTHER);
+        LegalGuardian legalGuardian3 = new LegalGuardian("Lechu", "Guardian3", "123123123", LocalDate.of(2014, 10, 10), DegreeOfRelationships.FATHER);
+
+        database.add(legalGuardian1);
+        database.add(legalGuardian2);
+        database.add(legalGuardian3);
 
         System.out.println("SEEDING HAS BEEN FINISHED SUCCESSFULLY!");
     }
