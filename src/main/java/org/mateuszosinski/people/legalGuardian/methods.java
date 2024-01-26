@@ -29,6 +29,34 @@ public class methods {
         return legalGuardiansCount;
     }
 
+    public static void showLegalGuardiansBasicInfo(ArrayList<DatabaseObject> database) {
+        int legalGuardiansCount = 0;
+        for(DatabaseObject databaseObject : database) {
+            if(databaseObject instanceof LegalGuardian) {
+                System.out.println(((LegalGuardian) databaseObject).basicPersonInformation());
+                legalGuardiansCount++;
+            }
+        }
+
+        if(legalGuardiansCount == 0) {
+            System.out.println("There are no legalGuardians!");
+        }
+    }
+
+    public static void showLegalGuardiansContactDetails(ArrayList<DatabaseObject> database) {
+        int legalGuardiansCount = 0;
+        for(DatabaseObject databaseObject : database) {
+            if(databaseObject instanceof LegalGuardian) {
+                System.out.println(((LegalGuardian) databaseObject).getContactDetails());
+                legalGuardiansCount++;
+            }
+        }
+
+        if(legalGuardiansCount == 0) {
+            System.out.println("There are no legalGuardians!");
+        }
+    }
+
     public static void createLegalGuardian(ArrayList<DatabaseObject> database) {
         try {
             Scanner scanner = new Scanner(System.in);
